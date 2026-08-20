@@ -204,8 +204,6 @@ open ios/Runner.xcworkspace
 
 ## 📡 API Contract Overview
 
-PetroFlow connects to the production REST API at `https://mern-todo-pro.onrender.com/api`:
-
 | Method | Endpoint | Description | Auth Required |
 | :--- | :--- | :--- | :---: |
 | `POST` | `/auth/register` | Create a new user account | No |
