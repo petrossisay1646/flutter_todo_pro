@@ -379,7 +379,7 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
             TextField(
               controller: _apiUrlController,
               decoration: const InputDecoration(
-                hintText: 'https://mern-todo-pro-api.onrender.com/api',
+                hintText: 'https://mern-todo-pro.onrender.com/api',
               ),
             ),
             const SizedBox(height: 10),

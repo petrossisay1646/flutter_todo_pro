@@ -1,6 +1,6 @@
 class ApiConstants {
   // Production Render API URL from the verified MERN project
-  static const String defaultBaseUrl = 'https://mern-todo-pro-api.onrender.com/api';
+  static const String defaultBaseUrl = 'https://mern-todo-pro.onrender.com/api';
   
   // Local Development URLs (for emulator / local testing)
   static const String localAndroidEmulatorUrl = 'http://10.0.2.2:5000/api';
