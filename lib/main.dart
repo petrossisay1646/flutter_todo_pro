@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'core/services/notification_service.dart';
 import 'core/storage/storage_service.dart';
 import 'core/theme/app_theme.dart';
 import 'features/splash/splash_screen.dart';
@@ -11,6 +12,11 @@ void main() async {
 
   // Initialize persistent storage
   final storageService = await StorageService.init();
+
+  // Initialize local notification service (Pomodoro sound alerts)
+  final notificationService = NotificationService();
+  await notificationService.initialize();
+  await notificationService.requestPermission();
 
   runApp(
     ProviderScope(

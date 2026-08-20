@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../core/services/notification_service.dart';
 import '../core/storage/storage_service.dart';
 import 'storage_provider.dart';
 
@@ -62,9 +63,10 @@ class PomodoroState {
 
 class PomodoroNotifier extends StateNotifier<PomodoroState> {
   final StorageService _storage;
+  final NotificationService _notifications;
   Timer? _timer;
 
-  PomodoroNotifier(this._storage)
+  PomodoroNotifier(this._storage, this._notifications)
       : super(PomodoroState(
           completedSessions: _storage.getPomodorosToday(),
         ));
@@ -121,17 +123,38 @@ class PomodoroNotifier extends StateNotifier<PomodoroState> {
     setMode(state.mode, workMinutes: workMinutes);
   }
 
-  void _onTimerComplete(int workMinutes) {
+  Future<void> _onTimerComplete(int workMinutes) async {
     if (state.mode == PomodoroMode.work) {
       final newCount = state.completedSessions + 1;
       _storage.setPomodorosToday(newCount);
-      final nextMode = newCount % 4 == 0 ? PomodoroMode.longBreak : PomodoroMode.shortBreak;
+      final nextMode =
+          newCount % 4 == 0 ? PomodoroMode.longBreak : PomodoroMode.shortBreak;
+
+      // Fire notification: focus session done
+      if (state.soundEnabled) {
+        await _notifications.showPomodoroComplete(
+          title: '🍅 Focus session complete!',
+          body: newCount % 4 == 0
+              ? 'Great work! Time for a long break. You deserve it.'
+              : 'Nice! Take a 5-minute break, then keep going.',
+        );
+      }
+
       state = state.copyWith(
         completedSessions: newCount,
         isRunning: false,
       );
       setMode(nextMode, workMinutes: workMinutes);
     } else {
+      // Fire notification: break done
+      if (state.soundEnabled) {
+        final isLong = state.mode == PomodoroMode.longBreak;
+        await _notifications.showPomodoroComplete(
+          title: isLong ? '🌿 Long break over!' : '☕ Break time is up!',
+          body: 'Time to focus. Start your next Pomodoro session.',
+        );
+      }
+
       setMode(PomodoroMode.work, workMinutes: workMinutes);
     }
   }
@@ -156,7 +179,13 @@ class PomodoroNotifier extends StateNotifier<PomodoroState> {
   }
 }
 
-final pomodoroProvider = StateNotifierProvider<PomodoroNotifier, PomodoroState>((ref) {
+final _notificationServiceProvider = Provider<NotificationService>((ref) {
+  return NotificationService();
+});
+
+final pomodoroProvider =
+    StateNotifierProvider<PomodoroNotifier, PomodoroState>((ref) {
   final storage = ref.watch(storageServiceProvider);
-  return PomodoroNotifier(storage);
+  final notifications = ref.watch(_notificationServiceProvider);
+  return PomodoroNotifier(storage, notifications);
 });

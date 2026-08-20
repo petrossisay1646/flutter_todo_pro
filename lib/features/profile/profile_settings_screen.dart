@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../core/constants/api_constants.dart';
 import '../../core/constants/app_colors.dart';
 import '../../providers/auth_provider.dart';
-import '../../providers/storage_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../shared/widgets/custom_button.dart';
 import '../../shared/widgets/custom_text_field.dart';
@@ -21,7 +19,6 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
   final _nameController = TextEditingController();
   final _dailyGoalController = TextEditingController();
   final _pomodoroDurationController = TextEditingController();
-  final _apiUrlController = TextEditingController();
 
   String _selectedAvatarColor = '#564CFF';
   bool _isSaving = false;
@@ -40,13 +37,11 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
   void initState() {
     super.initState();
     final user = ref.read(authProvider).user;
-    final storage = ref.read(storageServiceProvider);
 
     _nameController.text = user?.name ?? '';
     _dailyGoalController.text = '${user?.dailyGoal ?? 5}';
     _pomodoroDurationController.text = '${user?.pomodoroLength ?? 25}';
     _selectedAvatarColor = user?.avatarColor ?? '#564CFF';
-    _apiUrlController.text = storage.getCustomApiUrl() ?? ApiConstants.defaultBaseUrl;
   }
 
   @override
@@ -54,7 +49,6 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
     _nameController.dispose();
     _dailyGoalController.dispose();
     _pomodoroDurationController.dispose();
-    _apiUrlController.dispose();
     super.dispose();
   }
 
@@ -328,20 +322,6 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                         );
                       },
                     ),
-                    const Divider(height: 1),
-                    ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      leading: const Icon(Icons.link_rounded, color: AppColors.info),
-                      title: const Text('Backend API Endpoint', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14)),
-                      subtitle: Text(
-                        _apiUrlController.text,
-                        style: const TextStyle(fontSize: 11, color: AppColors.textMutedLight),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      trailing: const Icon(Icons.edit_outlined, size: 18),
-                      onTap: () => _showApiUrlDialog(),
-                    ),
                   ],
                 ),
               ),
@@ -359,62 +339,6 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  void _showApiUrlDialog() {
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('Custom API URL', style: TextStyle(fontWeight: FontWeight.w800)),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text(
-              'Switch between live Render cloud API and local Android Emulator / iOS Simulator API:',
-              style: TextStyle(fontSize: 12.5, color: AppColors.textMutedLight),
-            ),
-            const SizedBox(height: 12),
-            TextField(
-              controller: _apiUrlController,
-              decoration: const InputDecoration(
-                hintText: 'https://mern-todo-pro.onrender.com/api',
-              ),
-            ),
-            const SizedBox(height: 10),
-            Wrap(
-              spacing: 6,
-              children: [
-                ActionChip(
-                  label: const Text('Render Cloud', style: TextStyle(fontSize: 11)),
-                  onPressed: () => setState(() => _apiUrlController.text = ApiConstants.defaultBaseUrl),
-                ),
-                ActionChip(
-                  label: const Text('Android (10.0.2.2)', style: TextStyle(fontSize: 11)),
-                  onPressed: () => setState(() => _apiUrlController.text = ApiConstants.localAndroidEmulatorUrl),
-                ),
-              ],
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(onPressed: () => Navigator.of(ctx).pop(), child: const Text('Cancel')),
-          ElevatedButton(
-            onPressed: () async {
-              final newUrl = _apiUrlController.text.trim();
-              await ref.read(storageServiceProvider).setCustomApiUrl(newUrl);
-              ref.read(apiClientProvider).updateBaseUrl(newUrl);
-              if (mounted) {
-                Navigator.of(ctx).pop();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('API URL updated!')),
-                );
-              }
-            },
-            child: const Text('Save'),
-          ),
-        ],
       ),
     );
   }
