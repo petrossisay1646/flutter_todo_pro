@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 /// Handles local notifications (sound + alert) for Pomodoro timer events.
@@ -42,11 +43,17 @@ class NotificationService {
         ?.requestNotificationsPermission();
   }
 
-  /// Show a Pomodoro completion notification with default system sound.
+  /// Show a Pomodoro completion notification with system sound and vibration.
   Future<void> showPomodoroComplete({
     required String title,
     required String body,
   }) async {
+    // Play immediate audible alert and vibration
+    try {
+      await SystemSound.play(SystemSoundType.alert);
+      await HapticFeedback.heavyImpact();
+    } catch (_) {}
+
     if (!_initialized) await initialize();
 
     const androidDetails = AndroidNotificationDetails(

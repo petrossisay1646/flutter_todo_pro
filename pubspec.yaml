@@ -1,7 +1,7 @@
 name: flutter_todo_pro
 description: "A modern, full-stack productivity & task management mobile application built with Flutter, connecting to the MERN Todo Pro REST API."
 publish_to: 'none'
-version: 2.0.0+1
+version: 2.0.1+2
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
