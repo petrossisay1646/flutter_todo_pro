@@ -65,14 +65,14 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerPr
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                width: 76,
-                height: 76,
+                width: 80,
+                height: 80,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(22),
+                  borderRadius: BorderRadius.circular(24),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.15),
+                      color: Colors.black.withOpacity(0.18),
                       blurRadius: 30,
                       offset: const Offset(0, 10),
                     ),
@@ -81,27 +81,27 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerPr
                 child: const Icon(
                   Icons.check_box_rounded,
                   color: AppColors.primary,
-                  size: 44,
+                  size: 46,
                 ),
               ),
               const SizedBox(height: 18),
               const Text(
-                'Todo Pro',
+                'PetroFlow',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 28,
+                  fontSize: 30,
                   fontWeight: FontWeight.w900,
                   letterSpacing: -0.5,
                 ),
               ),
               const SizedBox(height: 6),
               Text(
-                'Productivity Workspace',
+                'PRODUCTIVITY SUITE',
                 style: TextStyle(
-                  color: Colors.white.withOpacity(0.8),
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 1.2,
+                  color: Colors.white.withOpacity(0.85),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1.5,
                 ),
               ),
               const SizedBox(height: 32),

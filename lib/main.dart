@@ -17,20 +17,20 @@ void main() async {
       overrides: [
         storageServiceProvider.overrideWithValue(storageService),
       ],
-      child: const TodoProApp(),
+      child: const PetroFlowApp(),
     ),
   );
 }
 
-class TodoProApp extends ConsumerWidget {
-  const TodoProApp({super.key});
+class PetroFlowApp extends ConsumerWidget {
+  const PetroFlowApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeProvider);
 
     return MaterialApp(
-      title: 'Todo Pro',
+      title: 'PetroFlow',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,

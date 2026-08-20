@@ -1,6 +1,15 @@
-# 📱 Flutter Todo Pro — Mobile Application
+# 📱 PetroFlow — Mobile Productivity Suite
 
-A modern, full-featured cross-platform mobile application built with **Flutter** & **Material 3**, connected to the **MERN Todo Pro REST API** backend and MongoDB database.
+**PetroFlow** is a modern, production-grade cross-platform mobile task management application for **Android** (phones & tablets) and **Apple iOS** (iPhone & iPad), powered by Flutter & Material 3, and connected to the **MERN Todo Pro REST API** backend and MongoDB Atlas database.
+
+---
+
+## 🎨 Brand & Identity
+
+- **Application Name**: PetroFlow
+- **Package / Application ID (Android)**: `com.petrosisay.petroflow`
+- **Bundle Identifier (iOS)**: `com.petrosisay.petroflow`
+- **Design Philosophy**: Minimalist, high-contrast Material 3 interface with dynamic check-and-flow iconography, dark and light mode themes, and responsive phone/tablet support.
 
 ---
 
@@ -8,9 +17,9 @@ A modern, full-featured cross-platform mobile application built with **Flutter**
 
 ```text
 ┌──────────────────────────────────────────────────────────┐
-│                MERN TODO PRO ECOSYSTEM                   │
+│                 PETROFLOW / MERN ECOSYSTEM               │
 ├────────────────────────────┬─────────────────────────────┤
-│   React Web Frontend       │   Flutter Mobile App        │
+│   React Web Frontend       │   PetroFlow Mobile App      │
 │   (mern-todo-pro)          │   (flutter_todo_pro)        │
 │   https://...vercel.app    │   Android / iOS Mobile      │
 └─────────────┬──────────────┴──────────────┬──────────────┘
@@ -34,10 +43,12 @@ A modern, full-featured cross-platform mobile application built with **Flutter**
 
 ## ✨ Features
 
-- 🔐 **Cross-Platform Authentication**: Log in or register using the same credentials as the web application. Persistent JWT session storage.
-- 📋 **Task Catalog (List View)**: Smart sorting (pinned tasks and due dates first), hashtag filtering, inline subtask checklist previews, and swipe-to-delete.
+- 📱 **Cross-Platform**: Tailored layouts and native behavior for Android phones/tablets and iPhone/iPad.
+- 🎨 **Custom App Icon**: High-resolution, vector-drawn launcher icons across all Android mipmaps and iOS AppIcon sets.
+- 🔐 **Cross-Platform Authentication**: Shared user database with web application via JWT tokens.
+- 📋 **Task Catalog (List View)**: Smart sorting (pinned tasks & due dates first), hashtag filtering, subtask checklists, and swipe-to-delete.
 - 📊 **Kanban Board**: Mobile-friendly board with swipeable columns for *To Do*, *In Progress*, and *Completed* stages.
-- 🍅 **Focus Mode (Pomodoro Timer)**: 25-minute focus intervals, short/long breaks, session counter, and direct task linking with one-tap completion.
+- 🍅 **Focus Mode (Pomodoro Timer)**: 25-minute focus intervals, short/long breaks, session counter, and direct task binding with one-tap completion.
 - 📈 **Analytics & Streaks**: 7-day completion trend bar chart, daily target goal circular progress ring, and consecutive day streak tracker (🔥).
 - 📦 **Bulk Action Mode**: Select multiple tasks for batch complete, batch delete, or mass priority updates.
 - 🎨 **Settings & Customization**: Avatar color palette, daily goal target, theme selector (Light, Dark, System), password management, and custom API URL switcher.
@@ -75,20 +86,12 @@ flutter pub get
 
 ### 4. Run on Device / Emulator
 ```bash
-# Run on connected Android or iOS device
-flutter run
+# Android Device / Emulator
+flutter run -d android
+
+# iOS Simulator / Device
+flutter run -d ios
 ```
-
----
-
-## ⚙️ Backend API Configuration
-
-By default, the mobile app connects to the live production Render API:
-`https://mern-todo-pro-api.onrender.com/api`
-
-To test against your local development server:
-1. Open the app → Go to **Profile** → **Backend API Endpoint**.
-2. Select **Android (10.0.2.2)** for Android Emulator or **Localhost** for iOS Simulator.
 
 ---
 
