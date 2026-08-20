@@ -72,7 +72,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerPr
                   borderRadius: BorderRadius.circular(24),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.18),
+                      color: Colors.black.withValues(alpha: 0.18),
                       blurRadius: 30,
                       offset: const Offset(0, 10),
                     ),
@@ -98,7 +98,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerPr
               Text(
                 'PRODUCTIVITY SUITE',
                 style: TextStyle(
-                  color: Colors.white.withOpacity(0.85),
+                  color: Colors.white.withValues(alpha: 0.85),
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.5,

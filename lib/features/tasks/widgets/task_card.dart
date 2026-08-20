@@ -93,14 +93,14 @@ class TaskCard extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             color: isSelected
-                ? AppColors.primary.withOpacity(0.08)
+                ? AppColors.primary.withValues(alpha: 0.08)
                 : (isDark ? AppColors.darkCard : AppColors.lightCard),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: isSelected
                   ? AppColors.primary
                   : (task.pinned
-                      ? AppColors.primary.withOpacity(0.5)
+                      ? AppColors.primary.withValues(alpha: 0.5)
                       : (isDark ? AppColors.borderDark : AppColors.borderLight)),
               width: task.pinned || isSelected ? 1.5 : 1,
             ),

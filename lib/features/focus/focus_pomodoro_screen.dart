@@ -149,7 +149,7 @@ class FocusPomodoroScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 10),
                     DropdownButtonFormField<String>(
-                      value: pomodoroState.linkedTaskId,
+                      initialValue: pomodoroState.linkedTaskId,
                       isExpanded: true,
                       hint: const Text('Select a task to focus on...'),
                       items: [
@@ -226,9 +226,9 @@ class FocusPomodoroScreen extends ConsumerWidget {
                   children: [
                     const Icon(Icons.local_fire_department_rounded, color: AppColors.streakOrange, size: 22),
                     const SizedBox(width: 8),
-                    Text(
+                    const Text(
                       "Today's Focus Sessions: ",
-                      style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
                     ),
                     Text(
                       '${pomodoroState.completedSessions}',
@@ -279,7 +279,7 @@ class _ModeTab extends StatelessWidget {
             boxShadow: isSelected
                 ? [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Colors.black.withValues(alpha: 0.05),
                       blurRadius: 4,
                       offset: const Offset(0, 2),
                     ),

@@ -39,7 +39,6 @@ class _TaskEditorSheetState extends State<TaskEditorSheet> {
   late List<String> _tags;
   late List<SubtaskModel> _subtasks;
 
-  final List<String> _defaultCategories = ['Work', 'Personal', 'Development', 'Study', 'Finance', 'Health'];
   final List<String> _popularTags = ['urgent', 'bug', 'feature', 'meeting', 'review', 'design'];
 
   @override
@@ -365,7 +364,7 @@ class _TaskEditorSheetState extends State<TaskEditorSheet> {
                         const Text('Priority', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
                         const SizedBox(height: 6),
                         DropdownButtonFormField<String>(
-                          value: _priority,
+                          initialValue: _priority,
                           items: const [
                             DropdownMenuItem(value: 'urgent', child: Text('🔴 Urgent')),
                             DropdownMenuItem(value: 'high', child: Text('🟠 High')),
@@ -385,7 +384,7 @@ class _TaskEditorSheetState extends State<TaskEditorSheet> {
                         const Text('Stage / Status', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
                         const SizedBox(height: 6),
                         DropdownButtonFormField<String>(
-                          value: _status,
+                          initialValue: _status,
                           items: const [
                             DropdownMenuItem(value: 'todo', child: Text('📋 To Do')),
                             DropdownMenuItem(value: 'in-progress', child: Text('⚡ In Progress')),

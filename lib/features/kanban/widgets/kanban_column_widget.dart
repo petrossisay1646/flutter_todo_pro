@@ -61,7 +61,7 @@ class KanbanColumnWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
-                  color: indicatorColor.withOpacity(0.15),
+                  color: indicatorColor.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
@@ -150,7 +150,7 @@ class _KanbanCard extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.02),
+              color: Colors.black.withValues(alpha: 0.02),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -165,7 +165,7 @@ class _KanbanCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                   decoration: BoxDecoration(
-                    color: prioColor.withOpacity(0.15),
+                    color: prioColor.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
@@ -201,7 +201,7 @@ class _KanbanCard extends StatelessWidget {
             Row(
               children: [
                 if (task.dueDate != null) ...[
-                  Icon(Icons.calendar_today, size: 11, color: AppColors.textMutedLight),
+                  const Icon(Icons.calendar_today, size: 11, color: AppColors.textMutedLight),
                   const SizedBox(width: 3),
                   Text(
                     DateFormatter.formatShort(task.dueDate),

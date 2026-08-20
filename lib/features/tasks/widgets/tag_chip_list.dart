@@ -17,8 +17,6 @@ class TagChipList extends StatelessWidget {
   Widget build(BuildContext context) {
     if (tags.isEmpty) return const SizedBox.shrink();
 
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return SizedBox(
       height: 32,
       child: ListView.separated(

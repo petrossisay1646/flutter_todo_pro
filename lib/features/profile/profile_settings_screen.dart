@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/api_constants.dart';
@@ -142,7 +141,7 @@ class _ProfileSettingsScreenState extends ConsumerState<ProfileSettingsScreen> {
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: _parseHexColor(_selectedAvatarColor).withOpacity(0.3),
+                            color: _parseHexColor(_selectedAvatarColor).withValues(alpha: 0.3),
                             blurRadius: 16,
                             offset: const Offset(0, 4),
                           ),

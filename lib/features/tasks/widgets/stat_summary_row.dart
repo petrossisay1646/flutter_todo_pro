@@ -96,7 +96,7 @@ class _StatMiniCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: isDanger
-                ? AppColors.danger.withOpacity(0.5)
+                ? AppColors.danger.withValues(alpha: 0.5)
                 : (isDark ? AppColors.borderDark : AppColors.borderLight),
           ),
         ),

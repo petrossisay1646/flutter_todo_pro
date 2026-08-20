@@ -100,7 +100,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                       decoration: BoxDecoration(
                         color: AppColors.urgentBg,
-                        border: Border.all(color: AppColors.urgentText.withOpacity(0.3)),
+                        border: Border.all(color: AppColors.urgentText.withValues(alpha: 0.3)),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Row(
