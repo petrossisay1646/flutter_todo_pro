@@ -22,7 +22,7 @@
 
 **PetroFlow** is built with **Flutter 3.41** and structured around **Clean Architecture principles**. It delivers a high-performance, native mobile experience that seamlessly synchronizes with the **MERN Todo Pro** ecosystem across web and cloud.
 
-Whether organizing high-priority engineering tasks, running focused 25-minute Pomodoro sessions, tracking weekly completion trends, or orchestrating tasks across interactive Kanban stages, PetroFlow empowers individuals and teams to achieve peak flow.
+Whether organizing high-priority engineering tasks, running focused 25-minute Promodoro sessions, tracking weekly completion trends, or orchestrating tasks across interactive Kanban stages, PetroFlow empowers individuals and teams to achieve peak flow.
 
 ---
 
@@ -42,8 +42,8 @@ Whether organizing high-priority engineering tasks, running focused 25-minute Po
   - ✅ **Completed**
 - One-tap status progressions and fluid horizontal transitions.
 
-### 🍅 Focus Mode (Pomodoro Timer)
-- Built-in Pomodoro workflow with **25-min Work**, **5-min Short Break**, and **15-min Long Break** intervals.
+### 🍅 Focus Mode (Promodoro Timer)
+- Built-in Promodoro workflow with **25-min Work**, **5-min Short Break**, and **15-min Long Break** intervals.
 - **Task Linking**: Directly associate a pending task to your active focus session and auto-complete upon session conclusion.
 - Daily session counter with persistent streak tracking (🔥).
 
@@ -106,7 +106,7 @@ lib/
 ├── features/
 │   ├── analytics/        # Analytics screen & weekly bar chart widgets
 │   ├── auth/             # Login & Registration screens with validation
-│   ├── focus/            # Focus/Pomodoro timer & linked task runner
+│   ├── focus/            # Focus/Promodoro timer & linked task runner
 │   ├── kanban/           # 3-Column Kanban board & stage shift widgets
 │   ├── profile/          # User profile, goal configuration & API switcher
 │   ├── shell/            # Main bottom navigation shell
