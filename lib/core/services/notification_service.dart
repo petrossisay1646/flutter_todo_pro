@@ -48,6 +48,7 @@ class NotificationService {
     required String title,
     required String body,
   }) async {
+    
     // Play immediate audible alert and vibration
     try {
       await SystemSound.play(SystemSoundType.alert);

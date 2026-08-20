@@ -27,7 +27,7 @@ void main() {
         'name': 'Petros Sisay',
         'email': 'petros@example.com',
         'dailyGoal': 6,
-        'promodoroLength': 30,
+        'pomodoroLength': 30,
         'avatarColor': '#564CFF',
       };
 
@@ -36,7 +36,7 @@ void main() {
       expect(user.name, 'Petros Sisay');
       expect(user.email, 'petros@example.com');
       expect(user.dailyGoal, 6);
-      expect(user.promodoroLength, 30);
+      expect(user.pomodoroLength, 30);
 
       final outputJson = user.toJson();
       expect(outputJson['id'], 'user_123');

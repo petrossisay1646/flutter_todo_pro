@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  
   // Brand & Primary
   static const Color primary = Color(0xFF564CFF);
   static const Color primaryHover = Color(0xFF453CE0);

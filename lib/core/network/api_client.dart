@@ -34,6 +34,7 @@ class ApiClient {
         },
         onError: (DioException error, handler) {
           if (error.response?.statusCode == 401) {
+            
             // Token is invalid/expired
             _storage.clearSession();
           }
